@@ -4,18 +4,19 @@ import 'package:someone_datingapp/features/auth/controllers.login/login_controll
 import '../../../../../utils/constants/sizes.dart';
 import '../../../../../utils/device/device_utility.dart';
 
-class onBoardingLogin extends StatelessWidget {
-  const onBoardingLogin({
+class onBoardingSkip extends StatelessWidget {
+  const onBoardingSkip({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: SDeviceUtils.getAppBarHeight(), right: Sizes.defaultSpace,
+      top: SDeviceUtils.getAppBarHeight(),
+      right: Sizes.defaultSpace,
       child: TextButton(
           onPressed: () => loginController.instance.skipPage(),
-          child: const Text('login')),
+          child: const Text('Skip')),
     );
   }
 }

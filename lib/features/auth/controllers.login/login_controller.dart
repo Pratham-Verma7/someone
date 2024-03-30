@@ -27,6 +27,10 @@ class loginController extends GetxController {
     );
   }
 
+  void authGoogle() {
+    // auth with google
+  }
+
   void nextPage() {
     // move to next page
     if (currentPageIndex.value == 2) {

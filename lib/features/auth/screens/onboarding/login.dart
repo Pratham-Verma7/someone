@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:someone_datingapp/features/auth/controllers.login/login_controller.dart';
+import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_auth_bnt.dart';
 import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_dot_navigation.dart';
-import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_login.dart';
-import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_next_bnt.dart';
 import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_page.dart';
+import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_signinwith.dart';
+import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_skip.dart';
 import 'package:someone_datingapp/utils/constants/images_str.dart';
 import 'package:someone_datingapp/utils/constants/text_str.dart';
 
@@ -40,11 +41,13 @@ class loginScreen extends StatelessWidget {
             ],
           ),
 
-          const onBoardingLogin(),
+          const onBoardingSkip(),
+
+          const onBoardingSn(),
 
           const obBoardingDotNavigation(),
 
-          const onBoardingNextButton(),
+          const onBoardingAuthButton(),
         ],
       ),
     );
