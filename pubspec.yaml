@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   iconsax: ^0.0.8
 
+  # GetX
   get: ^4.6.5
   get_storage: ^2.1.1
 
@@ -45,8 +46,10 @@ dependencies:
   url_launcher: ^6.2.5
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.1.0
+
+  # firebase
   firebase_core: ^2.27.2
-#  flutter_launcher_icons: ^0.13.1
+  #  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:

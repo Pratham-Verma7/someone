@@ -12,6 +12,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
+      // show leader meanwhile auth repo is deciding to show screen.
       home: const loginScreen(),
     );
   }
