@@ -4,15 +4,17 @@ class UserModel {
   final String id;
   final String email;
   String username;
-  String name;
+  String firstName;
+  String lastName;
   String phoneNumber;
   String profilePic;
 
   UserModel({
     required this.id,
-    required this.username,
     required this.email,
-    required this.name,
+    required this.username,
+    required this.firstName,
+    required this.lastName,
     required this.phoneNumber,
     required this.profilePic,
   });
@@ -23,12 +25,23 @@ class UserModel {
     return name.split(' ');
   }
 
+  static UserModel empty() => UserModel(
+        id: '',
+        email: '',
+        username: '',
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        profilePic: '',
+      );
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'email': email,
       'username': username,
-      'name': name,
+      'firstName': firstName,
+      'lastName': lastName,
       'phoneNumber': phoneNumber,
       'profilePic': profilePic,
     };

@@ -19,14 +19,16 @@ class UserController extends GetxController {
 
         final user = UserModel(
           id: userCredentials.user!.uid,
-          name: userCredentials.user!.displayName ?? 'user@someone',
-          username: nameParts[0],
           email: userCredentials.user!.email ?? '',
+          username: nameParts[0],
+          firstName: nameParts[0],
+          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
           phoneNumber: '',
           profilePic: userCredentials.user!.photoURL ?? '',
         );
 
-        await UserRepository.instance.saveUserRecord(user);
+        // save user record
+        await userRepository.saveUserRecord(user);
       }
     } catch (e) {
       SLoader.warningSnackBar(
