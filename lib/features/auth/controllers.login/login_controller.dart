@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:someone_datingapp/data/repositories/authentication_repo/authentication_repository.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/utils/constants/lottie_Str.dart';
+import 'package:someone_datingapp/utils/loaders/loaders.dart';
 import 'package:someone_datingapp/utils/network_manager/network_manager.dart';
 import 'package:someone_datingapp/utils/popups/full_screen_loader.dart';
 
@@ -40,8 +40,7 @@ class loginController extends GetxController {
   Future<void> googleSignIn() async {
     // auth with google
     try {
-      SFullScreenLoader.openLoadingDialog(
-          'Logging you in :)', Slottie.loading);
+      SFullScreenLoader.openLoadingDialog('Logging you in :)', Slottie.loading);
 
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) {
@@ -57,11 +56,11 @@ class loginController extends GetxController {
 
       SFullScreenLoader.stopLoading();
 
+      // redirect
       AuthenticationRepository.instance.screenRedirect();
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+      SFullScreenLoader.stopLoading();
+      SLoader.errorSnackBar(title: 'oh snap', message: e.toString());
     }
   }
 

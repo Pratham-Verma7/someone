@@ -22,7 +22,9 @@ class SSocialButtons extends StatelessWidget {
         onPressed: () => controller.googleSignIn(),
         style: ElevatedButton.styleFrom(
             backgroundColor: dark ? SColors.white : SColors.black,
-            padding: const EdgeInsets.all(Sizes.defaultSpace),
+            padding: const EdgeInsets.symmetric(
+                horizontal: Sizes.defaultSpace,
+                vertical: Sizes.defaultSpace - 2),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(Sizes.buttonRadius + 20),
             )),

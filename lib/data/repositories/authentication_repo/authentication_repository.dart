@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -24,8 +23,8 @@ class AuthenticationRepository extends GetxController {
 
     if (User != null) {
       // User is signed in
-      Get.offAll(() => SLoader.successSnackBar(
-          title: "Signed in", message: "User is signed in!"));
+      SLoader.successSnackBar(
+          title: "Signed in", message: "User is signed in!");
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
 
@@ -40,20 +39,16 @@ class AuthenticationRepository extends GetxController {
 
   Future<UserCredential?> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
+          await userAccount?.authentication;
 
-      final AuthCredential Credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
 
-      return await _auth.signInWithCredential(Credential);
+      return await _auth.signInWithCredential(credential);
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+      SLoader.errorSnackBar(title: 'oh snap', message: e.toString());
     }
     return null;
   }
