@@ -11,10 +11,10 @@ class onBoardingSn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      bottom: SDeviceUtils.getBottomNavigationBarHeight() + 110,
+      bottom: SDeviceUtils.getBottomNavigationBarHeight() + 105,
       left: Sizes.defaultSpace + 4,
       child: Text(
-        "Sign in with",
+        "Continue with",
         style: Theme.of(context).textTheme.bodyLarge,
         textAlign: TextAlign.center,
       ),

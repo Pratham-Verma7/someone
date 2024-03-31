@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:someone_datingapp/features/auth/screens/onboarding/login.dart';
+import 'package:someone_datingapp/bindings/general_bindings.dart';
+import 'package:someone_datingapp/utils/constants/colors.dart';
 import 'package:someone_datingapp/utils/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -12,8 +13,14 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
+      initialBinding: GeneralBindings(),
       // show leader meanwhile auth repo is deciding to show screen.
-      home: const loginScreen(),
+      home: const Scaffold(
+        backgroundColor: SColors.primarybg,
+        body: CircularProgressIndicator(
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

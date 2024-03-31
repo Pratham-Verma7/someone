@@ -25,7 +25,7 @@ class AuthenticationRepository extends GetxController {
     if (User != null) {
       // User is signed in
       Get.offAll(() => SLoader.successSnackBar(
-          title: "signd in", message: "User is signed in!"));
+          title: "Signed in", message: "User is signed in!"));
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
 

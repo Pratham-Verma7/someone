@@ -1,8 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:someone_datingapp/data/repositories/authentication_repo/authentication_repository.dart';
+import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
+import 'package:someone_datingapp/utils/constants/lottie_Str.dart';
+import 'package:someone_datingapp/utils/network_manager/network_manager.dart';
+import 'package:someone_datingapp/utils/popups/full_screen_loader.dart';
 
 class loginController extends GetxController {
   // Add your logic here
+
+  final userController = Get.put(UserController());
+
   static loginController get instance => Get.find();
 
   final pageController = PageController();
@@ -27,13 +37,39 @@ class loginController extends GetxController {
     );
   }
 
-  void authGoogle() {
+  Future<void> googleSignIn() async {
     // auth with google
+    try {
+      SFullScreenLoader.openLoadingDialog(
+          'Logging you in :)', Slottie.loading);
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        SFullScreenLoader.stopLoading();
+        return;
+      }
+
+      // google authentication
+      final UserCredentials =
+          await AuthenticationRepository.instance.signInWithGoogle();
+      //  save user data
+      await userController.saveUserRecord(UserCredentials);
+
+      SFullScreenLoader.stopLoading();
+
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
   }
 
   void nextPage() {
     // move to next page
     if (currentPageIndex.value == 2) {
+      final deviceStorage = GetStorage();
+      deviceStorage.write('IsFirstTime', false);
       // Get.to(LoginScreen());
     } else {
       int page = currentPageIndex.value + 1;
