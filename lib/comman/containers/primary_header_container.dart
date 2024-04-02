@@ -5,7 +5,8 @@ import '../widgets/custom_shapes/widget_curved_edges.dart';
 
 class SPrimaryHeaderContainer extends StatelessWidget {
   const SPrimaryHeaderContainer({
-    super.key, required this.child,
+    super.key,
+    required this.child,
   });
 
   final Widget child;
@@ -19,14 +20,11 @@ class SPrimaryHeaderContainer extends StatelessWidget {
         child: Stack(
           //   stack
 
-          children:
-          [
+          children: [
             child,
           ],
         ),
       ),
-    )
-    ,
     );
   }
 }

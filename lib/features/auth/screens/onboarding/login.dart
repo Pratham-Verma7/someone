@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:someone_datingapp/comman/widgets/login_sign/social_buttons.dart';
+import 'package:someone_datingapp/comman/widgets/login_sign_btn/social_buttons.dart';
 import 'package:someone_datingapp/features/auth/controllers.login/login_controller.dart';
 import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_dot_navigation.dart';
 import 'package:someone_datingapp/features/auth/screens/onboarding/widgets/onboarding_page.dart';
