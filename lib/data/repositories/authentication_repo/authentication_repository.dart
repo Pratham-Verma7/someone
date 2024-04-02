@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:someone_datingapp/features/auth/screens/onboarding/login.dart';
+import 'package:someone_datingapp/navigation_menu.dart';
 import 'package:someone_datingapp/utils/loaders/loaders.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -23,8 +24,7 @@ class AuthenticationRepository extends GetxController {
 
     if (User != null) {
       // User is signed in
-      SLoader.successSnackBar(
-          title: "Signed in", message: "User is signed in!");
+      Get.offAll(() => const NavigationMenu());
     } else {
       deviceStorage.writeIfNull('IsFirstTime', true);
 
