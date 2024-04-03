@@ -20,4 +20,8 @@ class STexts {
   static const String appTagLine = 'Find your perfect match';
   static const String appDescription =
       'Someone is a dating app that helps you find your perfect match.';
+// home app bar
+
+  static const String homeAppbarTitle = 'Welcome to Someone';
+  static const String homeAppbarSubTitle = 'Ayush';
 }

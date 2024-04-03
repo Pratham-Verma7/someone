@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:someone_datingapp/comman/widgets/custom_shapes/widget_curved_edges.dart';
-import 'package:someone_datingapp/utils/constants/colors.dart';
+import 'package:someone_datingapp/comman/containers/search_container.dart';
+import 'package:someone_datingapp/comman/texts/section_heading.dart';
+import 'package:someone_datingapp/features/main_app/screens/home/widgets/home_appbar.dart';
+import 'package:someone_datingapp/utils/constants/sizes.dart';
 
 import '../../../../comman/containers/primary_header_container.dart';
 
@@ -11,14 +11,35 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SingleChildScrollView(
-      child: Column(
-        children: [
-          // home widgets
-          SPrimaryHeaderContainer(child: Container()),
-        ],
+    return const Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // home widgets
+            SPrimaryHeaderContainer(
+                child: Column(
+              children: [
+                SHomeAppbar(),
+                SizedBox(height: Sizes.spaceBtwSections),
+                BSearchContainer(
+                  text: "Search",
+                ),
+                SizedBox(height: Sizes.spaceBtwSections),
+              ],
+            )),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: Sizes.defaultSpace),
+              child: Column(
+                children: [
+                  BSectionHeading(
+                    title: 'Colleges',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

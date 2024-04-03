@@ -9,4 +9,7 @@ class SImages {
 
   // Social Logos
   static const String googleLogo = 'assets/images/google_logo.png';
+
+  // Profile
+  static const String profileImg = 'assets/icons/Someone.png';
 }
