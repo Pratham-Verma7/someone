@@ -52,4 +52,10 @@ class AuthenticationRepository extends GetxController {
     }
     return null;
   }
+
+  /*             sign out                */
+  Future<void> signOut() async {
+    await _auth.signOut();
+    Get.offAll(() => const loginScreen());
+  }
 }

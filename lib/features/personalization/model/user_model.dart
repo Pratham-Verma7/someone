@@ -4,19 +4,21 @@ class UserModel {
   final String id;
   final String email;
   String username;
-  String firstName;
-  String lastName;
-  String phoneNumber;
-  String profilePic;
+  String fullName;
+  final int stars;
+  final String bio;
+  final String phoneNumber;
+  String profileUrl;
 
   UserModel({
+    required this.stars,
+    required this.bio,
     required this.id,
     required this.email,
     required this.username,
-    required this.firstName,
-    required this.lastName,
+    required this.fullName,
     required this.phoneNumber,
-    required this.profilePic,
+    required this.profileUrl,
   });
 
   String get formattedPhoneNumber => SFormatter.formatPhoneNumber(phoneNumber);
@@ -29,10 +31,11 @@ class UserModel {
         id: '',
         email: '',
         username: '',
-        firstName: '',
-        lastName: '',
+        fullName: '',
         phoneNumber: '',
-        profilePic: '',
+        profileUrl: '',
+        bio: '',
+        stars: 0,
       );
 
   Map<String, dynamic> toJson() {
@@ -40,10 +43,11 @@ class UserModel {
       'id': id,
       'email': email,
       'username': username,
-      'firstName': firstName,
-      'lastName': lastName,
+      'fullName': fullName,
       'phoneNumber': phoneNumber,
-      'profilePic': profilePic,
+      'profilePic': profileUrl,
+      'bio': bio,
+      'stars': stars,
     };
   }
 }

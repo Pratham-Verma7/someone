@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:someone_datingapp/comman/containers/primary_header_container.dart';
 import 'package:someone_datingapp/comman/layouts/list_tiles/settings_menu_tile.dart';
 import 'package:someone_datingapp/comman/layouts/list_tiles/user_profile.dart';
 import 'package:someone_datingapp/comman/texts/section_heading.dart';
 import 'package:someone_datingapp/comman/widgets/appbar/appbar.dart';
+import 'package:someone_datingapp/comman/widgets/custom_shapes/widget_curved_edges.dart';
+import 'package:someone_datingapp/data/repositories/authentication_repo/authentication_repository.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
 import 'package:someone_datingapp/utils/constants/sizes.dart';
 
@@ -18,25 +19,37 @@ class profileScreen extends StatelessWidget {
       child: Column(
         children: [
           // settings - top section
-          SPrimaryHeaderContainer(
-            child: Column(
-              children: [
-                SAppBar(
+          SCurvedEdgeWidget(
+            child: Container(
+              color: SColors.primary,
+              padding: const EdgeInsets.all(0),
+              child: Stack(
+                //   stack
+
+                children: [
+                  const SizedBox(
+                    height: 250,
+                  ),
+                  SAppBar(
                     title: Text('Account',
                         style: Theme.of(context)
                             .textTheme
                             .headlineMedium!
-                            .apply(color: SColors.white))),
-                const SizedBox(height: Sizes.spaceBtwSections),
-                // user profile card
-                const SUserProfileTile(),
-                const SizedBox(
-                  height: Sizes.spaceBtwSections,
-                )
-                // user email
-              ],
+                            .apply(color: SColors.white)),
+                    actions: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Iconsax.setting_25,
+                            color: SColors.white,
+                          ))
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
+
           // settings - bottom section
           Padding(
             padding: const EdgeInsets.all(Sizes.defaultSpace),
@@ -53,13 +66,21 @@ class profileScreen extends StatelessWidget {
                     icon: Iconsax.building,
                     subTitle:
                         'Galgotias College of Engineering and Technology'),
+                const SizedBox(height: Sizes.spaceBtwSections),
+                // user profile card
+                const SUserProfileTile(),
+                const SizedBox(
+                  height: Sizes.spaceBtwSections,
+                ),
                 const SizedBox(
                   height: Sizes.spaceBtwSections,
                 ),
                 SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                        onPressed: () {}, child: const Text('Logout'))),
+                        onPressed: () =>
+                            AuthenticationRepository.instance.signOut(),
+                        child: const Text('Logout'))),
                 const SizedBox(
                   height: Sizes.spaceBtwSections * 2.5,
                 )

@@ -21,10 +21,11 @@ class UserController extends GetxController {
           id: userCredentials.user!.uid,
           email: userCredentials.user!.email ?? '',
           username: nameParts[0],
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+          fullName: userCredentials.user!.displayName ?? '',
           phoneNumber: '',
-          profilePic: userCredentials.user!.photoURL ?? '',
+          bio: '',
+          stars: 0,
+          profileUrl: userCredentials.user!.photoURL ?? '',
         );
 
         // save user record

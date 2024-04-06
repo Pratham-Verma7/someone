@@ -18,12 +18,12 @@ class SHomeAppbar extends StatelessWidget {
           Text(STexts.homeAppbarTitle,
               style: Theme.of(context)
                   .textTheme
-                  .labelMedium!
+                  .labelLarge!
                   .apply(color: Colors.white.withOpacity(0.75))),
           Text(STexts.homeAppbarSubTitle,
               style: Theme.of(context)
                   .textTheme
-                  .labelLarge!
+                  .bodySmall!
                   .apply(color: Colors.white)),
         ],
       ),
@@ -31,7 +31,7 @@ class SHomeAppbar extends StatelessWidget {
         IconButton(
             onPressed: () {},
             icon: const Icon(
-              Iconsax.note,
+              Iconsax.notification_bing,
               color: SColors.white,
             ))
       ],

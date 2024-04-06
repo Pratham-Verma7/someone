@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:someone_datingapp/features/explore/screens/explore.dart';
 import 'package:someone_datingapp/features/main_app/screens/home/home.dart';
 import 'package:someone_datingapp/features/personalization/screens/settings/profile_scrn.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
@@ -12,7 +13,7 @@ class NavigationController extends GetxController {
   final screens = [
     // screens to navigate
     const HomeScreen(),
-    Container(color: Colors.blue),
+    const ExploreScreen(),
     Container(color: Colors.green),
     const profileScreen(),
   ];
@@ -26,8 +27,7 @@ class NavigationMenu extends StatelessWidget {
     final List<NavigationDestination> destinations = [
       // screen navigation labels
       const NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-      const NavigationDestination(
-          icon: Icon(Iconsax.building), label: 'College'),
+      const NavigationDestination(icon: Icon(Iconsax.people), label: 'Explore'),
       const NavigationDestination(icon: Icon(Iconsax.message), label: 'Chat'),
       const NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
     ];
