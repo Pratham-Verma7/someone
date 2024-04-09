@@ -12,4 +12,5 @@ class SImages {
 
   // Profile
   static const String profileImg = 'assets/icons/Someone.png';
+  static const String profileCardBg = 'assets/images/test1.jpg';
 }
