@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:someone_datingapp/features/chat/screens/chat_home.dart';
 import 'package:someone_datingapp/features/explore/screens/explore.dart';
 import 'package:someone_datingapp/features/main_app/screens/home/home.dart';
-import 'package:someone_datingapp/features/personalization/screens/settings/profile_scrn.dart';
+import 'package:someone_datingapp/features/personalization/screens/profile_screen/profile_scrn.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
 import 'package:someone_datingapp/utils/helpers/helper_functions.dart';
 
@@ -14,7 +15,7 @@ class NavigationController extends GetxController {
     // screens to navigate
     const HomeScreen(),
     const ExploreScreen(),
-    Container(color: Colors.green),
+    const chatHomeScreen(),
     const profileScreen(),
   ];
 }

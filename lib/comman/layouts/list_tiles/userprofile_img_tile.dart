@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:someone_datingapp/comman/containers/primary_header_container.dart';
+import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
+import 'package:someone_datingapp/features/personalization/screens/edit_profile/widgets/circular_img_frame.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
+import 'package:someone_datingapp/utils/constants/images_str.dart';
 import 'package:someone_datingapp/utils/constants/sizes.dart';
 import 'package:someone_datingapp/utils/formatters/formatter.dart';
 import 'package:someone_datingapp/utils/helpers/helper_functions.dart';
@@ -23,6 +27,7 @@ class userProfileImgTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     final double screenWidth = SHelperFunctions.screenWidth();
     return Stack(
       children: [
@@ -41,11 +46,22 @@ class userProfileImgTile extends StatelessWidget {
         Positioned(
           left: Sizes.defaultSpace,
           top: (screenWidth / 2) - (avatarRadius + 20),
-          child: CircleAvatar(
-            radius: avatarRadius,
-            backgroundColor: SColors.black,
-            foregroundImage: profileImg,
-          ),
+          child: Obx(() {
+            final networkImage = controller.user.value.profileUrl;
+            final image =
+                networkImage.isNotEmpty ? networkImage : SImages.profileImg;
+            return SCircularImage(
+              image: image,
+              width: avatarRadius * 2,
+              height: avatarRadius * 2,
+              isNetworkImage: networkImage.isNotEmpty,
+            );
+          }),
+          // CircleAvatar(
+          //   radius: avatarRadius,
+          //   backgroundColor: SColors.black,
+          //   foregroundImage: profileImg,
+          // ),
         ),
         Positioned(
             top: (screenWidth / 2),

@@ -1,27 +1,33 @@
-import 'package:someone_datingapp/utils/formatters/formatter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   final String id;
   final String email;
   String username;
   String fullName;
-  final int stars;
+  final int likes;
   final String bio;
-  final String phoneNumber;
+  final String bgImg;
   String profileUrl;
+  String gender;
+  String phoneNo;
+  String dob;
 
   UserModel({
-    required this.stars,
+    required this.likes,
     required this.bio,
     required this.id,
     required this.email,
     required this.username,
     required this.fullName,
-    required this.phoneNumber,
+    required this.bgImg,
     required this.profileUrl,
+    required this.gender,
+    required this.phoneNo,
+    required this.dob,
   });
 
-  String get formattedPhoneNumber => SFormatter.formatPhoneNumber(phoneNumber);
+  // String get formattedPhoneNumber => SFormatter.formatPhoneNumber(phoneNumber);
 
   static List<String> nameParts(name) {
     return name.split(' ');
@@ -32,10 +38,13 @@ class UserModel {
         email: '',
         username: '',
         fullName: '',
-        phoneNumber: '',
+        bgImg: '',
         profileUrl: '',
         bio: '',
-        stars: 0,
+        gender: '',
+        likes: 0,
+        phoneNo: '',
+        dob: '',
       );
 
   Map<String, dynamic> toJson() {
@@ -44,10 +53,35 @@ class UserModel {
       'email': email,
       'username': username,
       'fullName': fullName,
-      'phoneNumber': phoneNumber,
-      'profilePic': profileUrl,
+      'bgImg': bgImg,
+      'profileUrl': profileUrl,
       'bio': bio,
-      'stars': stars,
+      'likes': likes,
+      'gender': gender,
+      'phoneNo': phoneNo,
+      'dob': dob,
     };
+  }
+
+  static UserModel fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        id: document.id,
+        email: data['email'] ?? '',
+        username: data['username'] ?? '',
+        fullName: data['fullName'] ?? '',
+        bgImg: data['bgImg'] ?? '',
+        profileUrl: data['profileUrl'] ?? '',
+        bio: data['bio'] ?? '',
+        likes: data['likes'] ?? 0,
+        gender: data['gender'] ?? '',
+        phoneNo: data['phoneNo'] ?? '',
+        dob: data['dob'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
   }
 }

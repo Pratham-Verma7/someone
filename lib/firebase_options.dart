@@ -70,8 +70,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '280465158374',
     projectId: 'someone-datingapp',
     storageBucket: 'someone-datingapp.appspot.com',
-    androidClientId: '280465158374-abblgbo39q5edk46dqbg3ng03l7d2kgj.apps.googleusercontent.com',
-    iosClientId: '280465158374-3gbd01pqq7u1coqbfmjomcavhtecl15f.apps.googleusercontent.com',
+    androidClientId:
+        '280465158374-abblgbo39q5edk46dqbg3ng03l7d2kgj.apps.googleusercontent.com',
+    iosClientId:
+        '280465158374-3gbd01pqq7u1coqbfmjomcavhtecl15f.apps.googleusercontent.com',
     iosBundleId: 'com.example.someoneDatingapp',
   );
 }

@@ -39,6 +39,9 @@ class SFormatter {
     }
   }
 
+  static String formatDob(DateTime? dob) {
+    return DateFormat('dd/MM/yyyy').format(dob!);
+  }
   // static String internationalFormatPhoneNumber(String phoneNumber) {
   //   if (phoneNumber.length == 10) {
   //     return '+1 ${phoneNumber}';

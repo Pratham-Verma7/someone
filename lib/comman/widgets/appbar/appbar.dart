@@ -12,6 +12,7 @@ class SAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.leadingIcon,
     this.leadingOnPressed,
     this.showBackArrow = false,
+    this.appBarPadding = true,
   });
 
   final Widget? title;
@@ -19,12 +20,14 @@ class SAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
+  final bool appBarPadding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: Sizes.m, vertical: Sizes.s),
+      padding: appBarPadding
+          ? const EdgeInsets.symmetric(horizontal: Sizes.m, vertical: Sizes.s)
+          : const EdgeInsets.symmetric(vertical: Sizes.s),
       child: AppBar(
         automaticallyImplyLeading: false,
         leading: showBackArrow
