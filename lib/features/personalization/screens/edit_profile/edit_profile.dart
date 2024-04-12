@@ -17,9 +17,10 @@ class editProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return Scaffold(
-        appBar: const SAppBar(
+        appBar: SAppBar(
           showBackArrow: true,
-          title: Text('Edit Profile'),
+          title: Text('Edit Profile',
+              style: Theme.of(context).textTheme.headlineSmall),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -56,7 +57,7 @@ class editProfileScreen extends StatelessWidget {
                     SEditProfileMenu(
                       title: 'Name',
                       value: controller.user.value.fullName,
-                      onPressed: () => Get.to(const changeName()),
+                      onPressed: () => Get.to(() => const changeName()),
                     ),
                     SEditProfileMenu(
                       title: 'Username',

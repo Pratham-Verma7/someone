@@ -16,6 +16,7 @@ class SCircularImage extends StatelessWidget {
     this.fit = BoxFit.cover,
     this.padding = Sizes.s / 2,
     this.isNetworkImage = false,
+    this.addPadding = true,
   });
 
   final BoxFit? fit;
@@ -30,12 +31,14 @@ class SCircularImage extends StatelessWidget {
 
   final double width, height, padding;
 
+  final bool addPadding;
+
   @override
   Widget build(BuildContext context) {
     return Container(
         width: width,
         height: height,
-        padding: EdgeInsets.all(padding),
+        padding: addPadding ? EdgeInsets.all(padding) : null,
         decoration: BoxDecoration(
 // If image background color is null then switch it to light and dark mode color design.
           color: backgroundColor ??

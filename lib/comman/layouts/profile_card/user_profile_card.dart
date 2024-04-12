@@ -7,6 +7,7 @@ import 'package:someone_datingapp/features/personalization/controllers/user_cont
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:someone_datingapp/features/personalization/screens/profile_screen/Widgets/user_profile_bottemtiles.dart';
 import 'package:someone_datingapp/features/personalization/screens/profile_screen/Widgets/user_profile_data_containers.dart';
+import 'package:someone_datingapp/features/personalization/screens/settings_screen/user_settings.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
 import 'package:someone_datingapp/utils/constants/images_str.dart';
 import 'package:someone_datingapp/utils/constants/sizes.dart';
@@ -31,7 +32,7 @@ class userProfileTileMain extends StatelessWidget {
             profileImg: const AssetImage(SImages.profileImg),
             leadingWidget: roundedContainer(
                 child: IconButton(
-              onPressed: () {},
+              onPressed: () => Get.to(() => const UserSettings()),
               icon: const Icon(
                 Iconsax.setting_24,
                 size: 28,
