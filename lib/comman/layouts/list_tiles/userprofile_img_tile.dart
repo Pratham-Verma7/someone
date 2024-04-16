@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:someone_datingapp/comman/containers/primary_header_container.dart';
+import 'package:someone_datingapp/comman/shimmer/shimmer.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/widgets/circular_img_frame.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
@@ -50,12 +51,15 @@ class userProfileImgTile extends StatelessWidget {
             final networkImage = controller.user.value.profileUrl;
             final image =
                 networkImage.isNotEmpty ? networkImage : SImages.profileImg;
-            return SCircularImage(
-              image: image,
-              width: avatarRadius * 2,
-              height: avatarRadius * 2,
-              isNetworkImage: networkImage.isNotEmpty,
-            );
+            return (controller.imageUploading.value)
+                ? BShimmerEffect(
+                    width: avatarRadius * 2, height: avatarRadius * 2)
+                : SCircularImage(
+                    image: image,
+                    width: avatarRadius * 2,
+                    height: avatarRadius * 2,
+                    isNetworkImage: networkImage.isNotEmpty,
+                  );
           }),
           // CircleAvatar(
           //   radius: avatarRadius,

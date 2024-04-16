@@ -10,6 +10,7 @@ class changeName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(UpdateNameController());
+    
     return editProfileFieldsScafold(
       controller: controller,
       appBarTitle: 'Change Name',

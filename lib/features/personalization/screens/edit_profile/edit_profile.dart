@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:someone_datingapp/comman/shimmer/shimmer.dart';
 import 'package:someone_datingapp/comman/texts/section_heading.dart';
 import 'package:someone_datingapp/comman/widgets/appbar/appbar.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
+import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_bio.dart';
+import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_emailid.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_name.dart';
+import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_username.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/widgets/circular_img_frame.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/widgets/edit_profile_menu_tile.dart';
 import 'package:someone_datingapp/utils/constants/images_str.dart';
@@ -37,12 +41,14 @@ class editProfileScreen extends StatelessWidget {
                         final image = networkImage.isNotEmpty
                             ? networkImage
                             : SImages.profileImg;
-                        return SCircularImage(
-                          image: image,
-                          width: 120,
-                          height: 120,
-                          isNetworkImage: networkImage.isNotEmpty,
-                        );
+                        return (controller.imageUploading.value)
+                            ? const BShimmerEffect(width: 120, height: 120)
+                            : SCircularImage(
+                                image: image,
+                                width: 120,
+                                height: 120,
+                                isNetworkImage: networkImage.isNotEmpty,
+                              );
                       }),
                       TextButton(
                           onPressed: () => controller.uploadProfilePicture(),
@@ -62,13 +68,13 @@ class editProfileScreen extends StatelessWidget {
                     SEditProfileMenu(
                       title: 'Username',
                       value: controller.user.value.username,
-                      onPressed: () {},
+                      onPressed: () => Get.to(() => const changeUsername()),
                     ),
                     SEditProfileMenu(
                       title: 'Bio',
                       value: controller.user.value.bio,
                       isScrollableOverflow: true,
-                      onPressed: () {},
+                      onPressed: () => Get.to(const changeBio()),
                     ),
                   ]);
                 }),
@@ -85,7 +91,7 @@ class editProfileScreen extends StatelessWidget {
                     SEditProfileMenu(
                       title: 'Email ID',
                       value: controller.user.value.email,
-                      onPressed: () {},
+                      onPressed: () => Get.to(const changeEmailid()),
                     ),
                     SEditProfileMenu(
                       title: 'Gender',

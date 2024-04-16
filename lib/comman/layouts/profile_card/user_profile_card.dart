@@ -41,7 +41,7 @@ class userProfileTileMain extends StatelessWidget {
             ))),
         // user profile data
         Obx(() {
-          return userProfileDataContainer(
+          return UserProfileDataContainer(
               profileName: controller.user.value.fullName,
               profileUsername: controller.user.value.username,
               profileBio: controller.user.value.bio);

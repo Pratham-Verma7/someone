@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:someone_datingapp/comman/shimmer/shimmer.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/widgets/circular_img_frame.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
@@ -24,13 +25,14 @@ class SUserProfileTile extends StatelessWidget {
           final networkImage = controller.user.value.profileUrl;
           final image =
               networkImage.isNotEmpty ? networkImage : SImages.profileImg;
-          return SCircularImage(
-            image: image,
-            width: 60,
-            height: 60,
-            addPadding: false,
-            isNetworkImage: networkImage.isNotEmpty,
-          );
+          return (controller.imageUploading.value)
+              ? const BShimmerEffect(width: 60, height: 60)
+              : SCircularImage(
+                  image: image,
+                  width: 60,
+                  height: 60,
+                  isNetworkImage: networkImage.isNotEmpty,
+                );
         }),
         trailing: IconButton(
           icon: Icon(

@@ -12,6 +12,35 @@ class UserRepository extends GetxController {
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
+  Future<UserModel> fetchUserDataWithUsername(String username) async {
+    // fetch user record
+    try {
+      final querySnapshot = await _db
+          .collection('Users')
+          .where('username', isEqualTo: username)
+          .get();
+      if (querySnapshot.docs.isNotEmpty) {
+        return UserModel.fromSnapshot(querySnapshot.docs.first);
+      } else {
+        return UserModel.empty();
+      }
+    } catch (e) {
+      throw 'error : $e';
+    }
+  }
+
+  Future<bool> userNameCheck(String username) async {
+    try {
+      final querySnapshot = await _db
+          .collection('Users')
+          .where('username', isEqualTo: username)
+          .get();
+      return querySnapshot.docs.isEmpty;
+    } catch (e) {
+      throw 'Error querying username: $e';
+    }
+  }
+
   Future<void> saveUserRecord(UserModel user) async {
     // save user record
     try {

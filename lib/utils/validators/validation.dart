@@ -1,4 +1,31 @@
 class SValidator {
+  static String? UniqueUsername(String? value) {
+    return null;
+  }
+
+  static String? validEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Email is required';
+    }
+    final emailRegExp =
+        RegExp(r'^[a-zA-Z0-9.a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
+
+    if (!emailRegExp.hasMatch(value)) {
+      return 'Enter a valid email address';
+    }
+    return null;
+  }
+
+  static String? maxLength(int maxLength, String? value, String fieldName) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName is required';
+    }
+    if (value.length > maxLength) {
+      return '$fieldName must be less than $maxLength characters';
+    }
+    return null;
+  }
+
   static String? validateEmptyText(String? fieldName, String? value) {
     if (value == null || value.isEmpty) {
       return '$fieldName is required';

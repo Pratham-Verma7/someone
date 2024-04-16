@@ -10,6 +10,8 @@ class UserController extends GetxController {
 
   final userRepository = Get.put(UserRepository());
   final profileLoading = false.obs;
+  final imageUploading = false.obs;
+  bool _isImagePickerActive = false;
   Rx<UserModel> user = UserModel.empty().obs;
 
   @override
@@ -66,6 +68,9 @@ class UserController extends GetxController {
   }
 
   uploadProfilePicture() async {
+    if (_isImagePickerActive) return;
+
+    _isImagePickerActive = true;
     try {
       final image = await ImagePicker().pickImage(
           source: ImageSource.gallery,
@@ -73,6 +78,7 @@ class UserController extends GetxController {
           maxWidth: 512,
           maxHeight: 512);
       if (image != null) {
+        imageUploading.value = true;
         final imageUrl =
             await userRepository.uploadImage("Users/Images/Profile/", image);
 
@@ -92,6 +98,9 @@ class UserController extends GetxController {
     } catch (e) {
       SLoader.warningSnackBar(
           title: 'Data not Saved', message: 'something went wrong : $e');
+    } finally {
+      imageUploading.value = false;
+      _isImagePickerActive = false;
     }
   }
 }

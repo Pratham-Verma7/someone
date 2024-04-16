@@ -38,7 +38,9 @@ class SEditProfileMenu extends StatelessWidget {
                 ? SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Text(
-                      value,
+                      // value,
+                      // overflow: TextOverflow.ellipsis,
+                      value.replaceAll('\n', ' '),
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   )
