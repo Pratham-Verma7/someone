@@ -32,11 +32,12 @@ class editProfileFieldsScafold extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(Sizes.defaultSpace),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               description,
               style: Theme.of(context).textTheme.labelMedium,
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.start,
             ),
             const SizedBox(height: Sizes.spaceBtwSections),
             Form(

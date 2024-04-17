@@ -22,12 +22,7 @@ class changeUsername extends StatelessWidget {
             controller: controller.userName,
             expands: false,
             onChanged: controller.onUsernameChanged,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a username';
-              }
-              return null;
-            },
+            validator: (Value) => controller.usernameValidator(Value),
             decoration: const InputDecoration(
               labelText: 'Username',
               hintText: 'Enter your username',

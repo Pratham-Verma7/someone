@@ -14,9 +14,13 @@ class UpdateUsernameController extends GetxController {
 
   final userName = TextEditingController();
   final _usernameSubject = PublishSubject<String>();
+  bool _usernameIsValid = false;
 
+  String? _usernameErrorMessage;
   final userController = UserController.instance;
   final userRepository = Get.put(UserRepository());
+
+  // username check
 
   GlobalKey<FormState> updateProfileUsernameFormKey = GlobalKey<FormState>();
 
@@ -46,15 +50,15 @@ class UpdateUsernameController extends GetxController {
         return;
       }
 
-      Map<String, dynamic> profileName = {
+      Map<String, dynamic> profileUserName = {
         'username': userName.text.trim(),
       };
 
-      await userRepository.updateSingleUserField(profileName);
+      await userRepository.updateSingleUserField(profileUserName);
 
       userController.user.update((val) {
         if (val != null) {
-          val.fullName = userName.text.trim();
+          val.username = userName.text.trim();
         }
       });
 
@@ -72,23 +76,43 @@ class UpdateUsernameController extends GetxController {
     }
   }
 
-  UpdateUsernameController() {
-    _usernameSubject.stream
-        .debounceTime(const Duration(milliseconds: 300))
-        .listen((username) async {
-      if (!await userRepository.userNameCheck(username)) {
-        updateProfileUsernameFormKey.currentState?.validate();
-      }
-    });
-  }
-
   void onUsernameChanged(String username) {
     _usernameSubject.add(username);
   }
 
-  @override
-  void onClose() {
-    _usernameSubject.close();
-    super.onClose();
+  UpdateUsernameController() {
+    _usernameSubject.stream
+        .debounceTime(const Duration(milliseconds: 800))
+        .listen((username) async {
+      _usernameErrorMessage = await UniqueUsername(username);
+      _usernameIsValid = _usernameErrorMessage == null;
+      updateProfileUsernameFormKey.currentState?.validate();
+    });
+  }
+
+  Future<String?> UniqueUsername(String? value) async {
+    final usernameRegExp = RegExp(r'^[a-z0-9_.]{3,20}$');
+    final invalidSymbolsRegExp = RegExp(r'[^a-z0-9_.]');
+    final capitalLetterRegExp = RegExp(r'[A-Z]');
+    if (value == null || value.isEmpty) {
+      return 'Username is required';
+    }
+    if (capitalLetterRegExp.hasMatch(value)) {
+      return 'Username should not contain capital letters';
+    }
+    if (invalidSymbolsRegExp.hasMatch(value)) {
+      return 'only UnderScore, Dot and Numbers are allowed';
+    }
+    if (!usernameRegExp.hasMatch(value)) {
+      return 'Username should be between 3 to 20 characters';
+    }
+    if (!await userRepository.userNameCheck(value)) {
+      return 'Username is already taken';
+    }
+    return null;
+  }
+
+  String? usernameValidator(String? value) {
+    return _usernameErrorMessage;
   }
 }

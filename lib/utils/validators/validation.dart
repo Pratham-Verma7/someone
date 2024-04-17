@@ -1,46 +1,19 @@
 class SValidator {
-  static String? UniqueUsername(String? value) {
+  static String? validateEmptyText(String fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName is required';
+    }
     return null;
   }
 
   static String? validEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Email is required';
-    }
     final emailRegExp =
-        RegExp(r'^[a-zA-Z0-9.a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
-
-    if (!emailRegExp.hasMatch(value)) {
-      return 'Enter a valid email address';
-    }
-    return null;
-  }
-
-  static String? maxLength(int maxLength, String? value, String fieldName) {
-    if (value == null || value.isEmpty) {
-      return '$fieldName is required';
-    }
-    if (value.length > maxLength) {
-      return '$fieldName must be less than $maxLength characters';
-    }
-    return null;
-  }
-
-  static String? validateEmptyText(String? fieldName, String? value) {
-    if (value == null || value.isEmpty) {
-      return '$fieldName is required';
-    }
-    return null;
-  }
-
-  static String? validateEmail(String? value) {
+        RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
     if (value == null || value.isEmpty) {
       return 'Email is required';
     }
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-
     if (!emailRegExp.hasMatch(value)) {
-      return 'Enter a valid email address';
+      return 'Enter a valid email';
     }
     return null;
   }

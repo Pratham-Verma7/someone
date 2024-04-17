@@ -6,6 +6,7 @@ import 'package:someone_datingapp/comman/widgets/appbar/appbar.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_bio.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_emailid.dart';
+import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_gender.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_name.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_username.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/widgets/circular_img_frame.dart';
@@ -96,7 +97,7 @@ class editProfileScreen extends StatelessWidget {
                     SEditProfileMenu(
                       title: 'Gender',
                       value: controller.user.value.gender,
-                      onPressed: () {},
+                      onPressed: () => Get.to(const changeGender()),
                     ),
                     SEditProfileMenu(
                       title: 'Phone Number',
