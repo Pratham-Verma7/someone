@@ -28,15 +28,19 @@ class SFormatter {
   }
 
   static String formatPhoneNumber(String phoneNumber) {
-    if (phoneNumber.length == 10) {
-      return phoneNumber.replaceRange(
-          0, 3, '(${phoneNumber.substring(0, 3)}) ');
-    } else if (phoneNumber.length == 11) {
-      return phoneNumber.replaceRange(
-          0, 4, '(${phoneNumber.substring(0, 3)}) ');
-    } else {
-      return phoneNumber;
-    }
+    // Split the phone number into parts based on '-'
+    List<String> parts = phoneNumber.split('-');
+
+    // Extract the country code and the rest of the number
+    String countryCode = parts[0];
+    String restOfNumber = parts[1];
+
+    // Format the rest of the number
+    String formattedNumber =
+        restOfNumber.replaceRange(3, 3, '-').replaceRange(6, 6, '-');
+
+    // Combine the country code and the formatted number
+    return '+($countryCode) $formattedNumber';
   }
 
   static String formatDob(DateTime? dob) {

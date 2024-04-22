@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:someone_datingapp/comman/shimmer/shimmer.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
+import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_profile.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/widgets/circular_img_frame.dart';
 import 'package:someone_datingapp/utils/constants/colors.dart';
 import 'package:someone_datingapp/utils/constants/images_str.dart';
@@ -35,13 +36,12 @@ class SUserProfileTile extends StatelessWidget {
                 );
         }),
         trailing: IconButton(
-          icon: Icon(
-            Iconsax.edit,
-            color: SHelperFunctions.isDarkMode(context)
-                ? SColors.white
-                : SColors.black,
-          ),
-          onPressed: () {},
-        ));
+            icon: Icon(
+              Iconsax.edit,
+              color: SHelperFunctions.isDarkMode(context)
+                  ? SColors.white
+                  : SColors.black,
+            ),
+            onPressed: () => Get.to(const editProfileScreen())));
   }
 }

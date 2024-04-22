@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:someone_datingapp/data/repositories/user_repository/user_repository.dart';
+import 'package:someone_datingapp/data/repositories/user_repository/private_user_repository.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/utils/constants/lottie_Str.dart';
 import 'package:someone_datingapp/utils/loaders/loaders.dart';
@@ -50,7 +50,7 @@ class UpdateBioController extends GetxController {
 
       await userRepository.updateSingleUserField(bioData);
 
-     userController.user.update((val) {
+      userController.user.update((val) {
         if (val != null) {
           val.bio = bio.text.trim();
         }

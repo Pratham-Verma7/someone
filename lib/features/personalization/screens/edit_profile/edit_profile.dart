@@ -5,7 +5,6 @@ import 'package:someone_datingapp/comman/texts/section_heading.dart';
 import 'package:someone_datingapp/comman/widgets/appbar/appbar.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_bio.dart';
-import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_emailid.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_gender.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_name.dart';
 import 'package:someone_datingapp/features/personalization/screens/edit_profile/edit_screens/change_username.dart';
@@ -14,6 +13,7 @@ import 'package:someone_datingapp/features/personalization/screens/edit_profile/
 import 'package:someone_datingapp/utils/constants/images_str.dart';
 import 'package:someone_datingapp/utils/constants/sizes.dart';
 import 'package:someone_datingapp/utils/formatters/formatter.dart';
+import 'package:someone_datingapp/utils/loaders/loaders.dart';
 
 class editProfileScreen extends StatelessWidget {
   const editProfileScreen({super.key});
@@ -92,7 +92,12 @@ class editProfileScreen extends StatelessWidget {
                     SEditProfileMenu(
                       title: 'Email ID',
                       value: controller.user.value.email,
-                      onPressed: () => Get.to(const changeEmailid()),
+                      onPressed: () {
+                        SLoader.warningSnackBar(
+                            title: 'Warning',
+                            message: "You can't change your email id.");
+                      },
+                      //  () => Get.to(const changeEmailid())
                     ),
                     SEditProfileMenu(
                       title: 'Gender',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:someone_datingapp/data/repositories/user_repository/user_repository.dart';
+import 'package:someone_datingapp/data/repositories/user_repository/private_user_repository.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/utils/constants/lottie_Str.dart';
 import 'package:someone_datingapp/utils/loaders/loaders.dart';

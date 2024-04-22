@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:someone_datingapp/data/repositories/user_repository/user_repository.dart';
+import 'package:someone_datingapp/data/repositories/user_repository/private_user_repository.dart';
 import 'package:someone_datingapp/features/personalization/model/user_model.dart';
 import 'package:someone_datingapp/utils/loaders/loaders.dart';
 
