@@ -20,7 +20,6 @@ class SPrimaryHeaderContainer extends StatelessWidget {
         padding: const EdgeInsets.all(0),
         child: Stack(
           //   stack
-
           children: [
             child,
           ],

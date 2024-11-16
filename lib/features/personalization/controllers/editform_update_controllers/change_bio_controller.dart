@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:someone_datingapp/data/repositories/user_repository/private_user_repository.dart';
 import 'package:someone_datingapp/features/personalization/controllers/user_controller.dart';
 import 'package:someone_datingapp/utils/constants/lottie_Str.dart';
 import 'package:someone_datingapp/utils/loaders/loaders.dart';
 import 'package:someone_datingapp/utils/network_manager/network_manager.dart';
 import 'package:someone_datingapp/utils/popups/full_screen_loader.dart';
+
+import '../../../../data/repositories/user_repository/public_user_repository.dart';
 
 class UpdateBioController extends GetxController {
   static UpdateBioController get instance => Get.find();

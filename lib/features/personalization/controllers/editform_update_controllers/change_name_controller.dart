@@ -8,6 +8,8 @@ import 'package:someone_datingapp/utils/loaders/loaders.dart';
 import 'package:someone_datingapp/utils/network_manager/network_manager.dart';
 import 'package:someone_datingapp/utils/popups/full_screen_loader.dart';
 
+import '../../../../data/repositories/user_repository/public_user_repository.dart';
+
 class UpdateNameController extends GetxController {
   static UpdateNameController get instance => Get.find();
 

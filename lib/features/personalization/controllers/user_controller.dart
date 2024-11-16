@@ -5,6 +5,8 @@ import 'package:someone_datingapp/data/repositories/user_repository/private_user
 import 'package:someone_datingapp/features/personalization/model/user_model.dart';
 import 'package:someone_datingapp/utils/loaders/loaders.dart';
 
+import '../../../data/repositories/user_repository/public_user_repository.dart';
+
 class UserController extends GetxController {
   static UserController get instance => Get.find();
 

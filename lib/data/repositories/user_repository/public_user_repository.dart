@@ -7,8 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:someone_datingapp/data/repositories/authentication_repo/authentication_repository.dart';
 import 'package:someone_datingapp/features/personalization/model/user_model.dart';
 
-class UserPublicRepository extends GetxController {
-  static UserPublicRepository get instance => Get.find();
+class UserRepository extends GetxController {
+  static UserRepository get instance => Get.find();
 
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 

@@ -37,6 +37,8 @@ dependencies:
   iconsax: ^0.0.8
   logger: ^2.0.1
 
+  flutter_plugin_android_lifecycle: ^2.0.19
+
   # GetX
   get: ^4.6.5
   get_storage: ^2.1.1
